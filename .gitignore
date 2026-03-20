@@ -1,0 +1,12 @@
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+coverage/
+*.nupkg
+*.snupkg
+.idea/
+*.DotSettings.user
+publish/

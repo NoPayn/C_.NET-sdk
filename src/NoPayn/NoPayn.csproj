@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12</LangVersion>
+    <RootNamespace>NoPayn</RootNamespace>
+    <PackageId>NoPayn</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Cost+</Authors>
+    <Company>Cost+</Company>
+    <Description>Official .NET SDK for the NoPayn Payment Gateway. Simplifies the HPP redirect flow, HMAC payload signing, and webhook verification.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://costplus.io</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/NoPayn/C_.NET-sdk</RepositoryUrl>
+    <PackageTags>nopayn;payment;gateway;hpp;sdk</PackageTags>
+  </PropertyGroup>
+
+</Project>
