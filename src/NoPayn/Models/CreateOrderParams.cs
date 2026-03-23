@@ -12,4 +12,7 @@ public record CreateOrderParams
     public string? Locale { get; init; }
     public IReadOnlyList<string>? PaymentMethods { get; init; }
     public string? ExpirationPeriod { get; init; }
+    public IReadOnlyList<OrderLine>? OrderLines { get; init; }
+    public IDictionary<string, string>? Customer { get; init; }
+    public IReadOnlyList<IDictionary<string, object>>? Transactions { get; init; }
 }

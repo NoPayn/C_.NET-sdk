@@ -86,6 +86,29 @@ public sealed class NoPaynClient : IDisposable
         ).ConfigureAwait(false);
     }
 
+    // ── Transaction API ────────────────────────────────────────────────────────
+
+    /// <summary>Capture a transaction via <c>POST /v1/orders/{orderId}/transactions/{transactionId}/captures/</c>.</summary>
+    public async Task<Transaction> CaptureTransactionAsync(string orderId, string transactionId)
+    {
+        return await RequestAsync<Transaction>(
+            HttpMethod.Post,
+            $"/v1/orders/{Uri.EscapeDataString(orderId)}/transactions/{Uri.EscapeDataString(transactionId)}/captures/"
+        ).ConfigureAwait(false);
+    }
+
+    /// <summary>Void a transaction via <c>POST /v1/orders/{orderId}/transactions/{transactionId}/voids/amount/</c>.</summary>
+    public async Task<Transaction> VoidTransactionAsync(string orderId, string transactionId, int amount, string? description = null)
+    {
+        var body = new VoidRequest { Amount = amount, Description = description };
+        var json = JsonSerializer.Serialize(body, JsonOptions);
+        return await RequestAsync<Transaction>(
+            HttpMethod.Post,
+            $"/v1/orders/{Uri.EscapeDataString(orderId)}/transactions/{Uri.EscapeDataString(transactionId)}/voids/amount/",
+            json
+        ).ConfigureAwait(false);
+    }
+
     // ── HPP Redirect ───────────────────────────────────────────────────────────
 
     /// <summary>
@@ -234,6 +257,12 @@ public sealed class NoPaynClient : IDisposable
     }
 
     private record RefundRequest
+    {
+        public int Amount { get; init; }
+        public string? Description { get; init; }
+    }
+
+    private record VoidRequest
     {
         public int Amount { get; init; }
         public string? Description { get; init; }
